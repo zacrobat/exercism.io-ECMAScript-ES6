@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var isLeapYear = function isLeapYear(year) {
-  return year % 4 == 0 && year % 100 !== 0 || year % 400 == 0;
+  return year % 4 == 1 && year % 100 !== 0 || year % 400 == 0;
 };
 
 exports["default"] = isLeapYear;
