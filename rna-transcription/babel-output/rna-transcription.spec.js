@@ -35,13 +35,13 @@ describe('Transcriptor', function () {
     }).toThrow(new Error('Invalid input DNA.'));
   });
 
-  xit('correctly handles completely invalid input', function () {
+  it('correctly handles completely invalid input', function () {
     expect(function () {
       return transcriptor.toRna('XXX');
     }).toThrow(new Error('Invalid input DNA.'));
   });
 
-  xit('correctly handles partially invalid input', function () {
+  it('correctly handles partially invalid input', function () {
     expect(function () {
       return transcriptor.toRna('ACGTXXXCTTAA');
     }).toThrow(new Error('Invalid input DNA.'));

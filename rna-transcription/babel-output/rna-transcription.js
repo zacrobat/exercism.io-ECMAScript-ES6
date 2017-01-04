@@ -1,31 +1,3 @@
-/*
-Write a program that, given a DNA strand, returns its RNA complement (per RNA transcription).
-
-Both DNA and RNA strands are a sequence of nucleotides.
-
-The four nucleotides found in DNA are adenine (**A**), cytosine (**C**),
-guanine (**G**) and thymine (**T**).
-
-The four nucleotides found in RNA are adenine (**A**), cytosine (**C**),
-guanine (**G**) and uracil (**U**).
-
-Given a DNA strand, its transcribed RNA strand is formed by replacing
-each nucleotide with its complement:
-
-* `G` -> `C`
-* `C` -> `G`
-* `T` -> `A`
-* `A` -> `U`
-*/
-
-/*
-Your ECMAScript solution for Rna Transcription has been submitted. View it here:
-http://exercism.io/submissions/2a6b1574256f407b8366b04cb18e56b4
-
-See related solutions and get involved here:
-http://exercism.io/tracks/ecmascript/exercises/rna-transcription
-*/
-
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -36,6 +8,13 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+var dnaToRna = {
+  G: 'C',
+  C: 'G',
+  T: 'A',
+  A: 'U'
+};
+
 var Transcriptor = (function () {
   function Transcriptor() {
     _classCallCheck(this, Transcriptor);
@@ -43,13 +22,15 @@ var Transcriptor = (function () {
 
   _createClass(Transcriptor, [{
     key: 'toRna',
-    value: function toRna(dna) {
-      var dnaArray = Array.from(dna);
-      var rna = [];
-      var mapOut = dnaArray.map(function (nucleotide) {
-        if (nucleotide == 'G') rna.push('C');else if (nucleotide == 'C') rna.push('G');else if (nucleotide == 'T') rna.push('A');else rna.push('U');
-      });
-      return rna.join('');
+    value: function toRna(strand) {
+
+      var inputValidation = new RegExp(/[^GCAT]/);
+
+      if (inputValidation.test(strand)) throw new Error('Invalid input DNA.');
+
+      return strand.split('').map(function (nucleotide) {
+        return dnaToRna[nucleotide];
+      }).join('');
     }
   }]);
 
